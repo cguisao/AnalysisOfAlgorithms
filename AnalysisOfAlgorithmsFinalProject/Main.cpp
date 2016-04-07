@@ -11,7 +11,7 @@
 #include <iostream>
 #include <time.h>
 #include <chrono>
-#include<thread>
+#include <thread>
 #include "Dynamic.h"
 #include "Recursive.h"
 
