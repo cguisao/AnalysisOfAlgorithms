@@ -1,0 +1,9 @@
+*.opensdf
+*.sdf
+*.sln
+*.vcxproj
+AnalysisOfAlgorithmsFinalProject/AnalysisOfAlgorithmsFinalProject.vcxproj.filters
+AnalysisOfAlgorithmsFinalProject/Debug/Analysis.FA8253E5.tlog/AnalysisOfAlgorithmsFinalProject.lastbuildstate
+AnalysisOfAlgorithmsFinalProject/Debug/Analysis.FA8253E5.tlog/CL.read.1.tlog
+AnalysisOfAlgorithmsFinalProject/Debug/vc120.idb
+*.tlog
