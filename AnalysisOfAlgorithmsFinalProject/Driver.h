@@ -75,8 +75,29 @@ double Driver::dynamicTime(int k, int n, int m)
 	}
 
 	clock_t startTime = clock();
-	double answer = dyna.LCS(Y, X, size, size);
+	double answer = dyna.LCS(Y, X, n, m);
 	clock_t endTime = clock();
 
-	return answer;
+	return endTime;
+}
+
+double Driver::recursiveTime(int k, int n, int m)
+{
+	/* Make sure to get both temp arrays ready to be able to be fed to the dynamic fucntion */
+	char tempY[18];
+	char tempX[18];
+
+	Recursive recur;
+
+	for (int i = 0; i < k; i++)
+	{
+		tempY[i] = Y[i];
+		tempX[i] = X[i];
+	}
+
+	clock_t startTime = clock();
+	double answer = recur.RecursiveLCS(Y, X, n, m);
+	clock_t endTime = clock();
+
+	return endTime;
 }
