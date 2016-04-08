@@ -1,6 +1,6 @@
 // ***********************************************************************
 //
-// (c) Copyright 2014 Carlos Guisao 
+// (c) Copyright 2016 Carlos Guisao 
 //
 //  All rights reserved.
 //
@@ -18,7 +18,6 @@ public:
 	~dynamic();
 	int LCS(char *X, char *Y, int m, int n);
 	int max(int x, int y);
-
 private:
 };
 
