@@ -18,16 +18,16 @@ using namespace std;
 int main()
 {
 	Driver d[5];
-	double runningTime[2][5][4];
+	double runningTime[2][5][6];
 	for (int j = 0; j < 5; j++)
 	{
-		for (int i = 3; i <= 12; i+=3)
+		for (int i = 2; i <= 12; i++)
 		{
-			runningTime[0][j][(i/3)-1] = d[j].dynamicTime(d[j].X, d[j].Y, i*2);
-			runningTime[1][j][(i/3)-1] = d[j].recursiveTime(d[j].X, d[j].Y, i);
+			runningTime[0][j][(i-2)] = d[j].dynamicTime(d[j].X, d[j].Y, i*2);
+			runningTime[1][j][(i-2)] = d[j].recursiveTime(d[j].X, d[j].Y, i);
 		}
 	}
-
+	
 	// Print part of the program
 
 	for (int i = 0; i < 2; i++)
@@ -43,9 +43,9 @@ int main()
 			cout << "                      Recursion                           " << endl;
 			cout << "**********************************************************" << endl;
 		}
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < 10; j++)
 		{
-			cout << j+1 << "   ";
+			cout << j+2 << "   ";
 			for (int k = 0; k < 5; k++)
 			{
 				printf("%4.1f s  \t", (double)runningTime[i][k][j]);

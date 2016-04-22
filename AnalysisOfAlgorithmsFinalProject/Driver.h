@@ -23,8 +23,8 @@ public:
 	~Driver();
 	double dynamicTime(char *m, char *n, int size);
 	double recursiveTime(char *m, char *n, int size);
-	char Y[1000];
-	char X[1000];
+	char Y[100];
+	char X[100];
 private:
 	int size;
 };
@@ -33,7 +33,7 @@ Driver::Driver()
 {
 	/* Create the two arrays for the test cases */
 	srand(time(NULL));
-	size = 1000;
+	size = 100;
 	Y[size];
 	for (int i = 0; i < size; i++)
 	{
@@ -66,12 +66,12 @@ double Driver::dynamicTime(char *n, char *m, int size)
 	dynamic dyna;
 	/* Make sure to get both temp arrays ready to be able to be fed to the dynamic fucntion */
 	
-	char ** tempY = new char*[1000];
-	for (int i = 0; i < 1000; ++i)
+	char ** tempY = new char*[100];
+	for (int i = 0; i < 100; ++i)
 		tempY[i] = new char[size];
 	
-	char ** tempX = new char*[1000];
-	for (int i = 0; i < 1000; ++i)
+	char ** tempX = new char*[100];
+	for (int i = 0; i < 100; ++i)
 		tempX[i] = new char[size
 		];
 
