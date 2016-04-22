@@ -12,6 +12,7 @@
 #include "Recursive.h"
 #include <chrono>
 #include <thread>
+#include <time.h>
 
 using namespace std;
 
@@ -20,12 +21,11 @@ class Driver
 public:
 	Driver();
 	~Driver();
-	double dynamicTime(int k, int n, int m);
-	double recursiveTime(int k, int n, int m);
-
+	double dynamicTime(char *m, char *n, int size);
+	double recursiveTime(char *m, char *n, int size);
+	char Y[1000];
+	char X[1000];
 private:
-	char Y[18];
-	char X[18];
 	int size;
 };
 
@@ -33,7 +33,7 @@ Driver::Driver()
 {
 	/* Create the two arrays for the test cases */
 	srand(time(NULL));
-	size = 18;
+	size = 1000;
 	Y[size];
 	for (int i = 0; i < size; i++)
 	{
@@ -61,43 +61,89 @@ Driver::~Driver()
 {
 }
 
-double Driver::dynamicTime(int k, int n, int m)
+double Driver::dynamicTime(char *n, char *m, int size)
 {
-	/* Make sure to get both temp arrays ready to be able to be fed to the dynamic fucntion */
-	char tempY[18];
-	char tempX[18];
 	dynamic dyna;
+	/* Make sure to get both temp arrays ready to be able to be fed to the dynamic fucntion */
+	
+	char ** tempY = new char*[1000];
+	for (int i = 0; i < 1000; ++i)
+		tempY[i] = new char[size];
+	
+	char ** tempX = new char*[1000];
+	for (int i = 0; i < 1000; ++i)
+		tempX[i] = new char[size
+		];
 
-	for (int i = 0; i < k; i++)
+	int current = 0;
+	for (int i = 1; i < 20; i++)
 	{
-		tempY[i] = Y[i];
-		tempX[i] = X[i];
+		for (int j = 0; j < size; j++)
+		{
+			tempY[i][j] = n[current];
+			tempX[i][j] = m[current];
+			current++;
+		}
+		current == 0;
 	}
 
-	clock_t startTime = clock();
-	double answer = dyna.LCS(Y, X, n, m);
-	clock_t endTime = clock();
+	typedef std::chrono::high_resolution_clock Clock;
+	typedef std::chrono::milliseconds milliseconds;
+	
+	Clock::time_point startTime = Clock::now();
+	for (int i = 0; i < 30; i++)
+	{
+		dyna.LCS(tempY[i], tempX[i], size, size);
+	}
+	Clock::time_point endTime = Clock::now();
 
-	return endTime;
+	milliseconds ms = std::chrono::duration_cast<milliseconds>(endTime - startTime);
+
+	double result = ms.count() / double(30) * 1000;
+
+	return result/2;
 }
 
-double Driver::recursiveTime(int k, int n, int m)
+double Driver::recursiveTime(char *n, char *m, int size)
 {
-	/* Make sure to get both temp arrays ready to be able to be fed to the dynamic fucntion */
-	char tempY[18];
-	char tempX[18];
-
 	Recursive recur;
+	int arraySize = 10;
+	/* Make sure to get both temp arrays ready to be able to be fed to the dynamic fucntion */
 
-	for (int i = 0; i < k; i++)
+	char ** tempY = new char*[30];
+	for (int i = 0; i < 30; ++i)
+		tempY[i] = new char[size];
+
+	char ** tempX = new char*[30];
+	for (int i = 0; i < 30; ++i)
+		tempX[i] = new char[size];
+
+	int current = 0;
+	for (int i = 0; i < 30; i++)
 	{
-		tempY[i] = Y[i];
-		tempX[i] = X[i];
+		for (int j = 0; j < size; j++)
+		{
+			tempY[i][j] = n[current];
+			tempX[i][j] = m[current];
+			current++;
+		}
+		current == 0;
 	}
 
-	clock_t startTime = clock();
-	double answer = recur.RecursiveLCS(Y, X, n, m);
-	clock_t endTime = clock();
+	typedef std::chrono::high_resolution_clock Clock;
+	typedef std::chrono::milliseconds milliseconds;
 
-	return endTime;
+	Clock::time_point startTime = Clock::now();
+
+	for (int i = 0; i < 30; i++)
+	{
+		recur.RecursiveLCS(tempY[i], tempX[i], size, size);
+	}
+	Clock::time_point endTime = Clock::now();
+
+	milliseconds ms = std::chrono::duration_cast<milliseconds>(endTime - startTime);
+
+	double result = ms.count()/double(30) * 1000;
+
+	return result;
 }
